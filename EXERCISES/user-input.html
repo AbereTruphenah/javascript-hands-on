@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accepting User Input</title>
+    </head>
+    <body>
+        <label>Username:</label>
+        <input type="text" id="myText"><br><br>
+        <button type="submit" id="mysubmit">submit</button>
+
+        <script>
+        //1.Window Prompt
+        let username;
+        username=window.prompt("Enter username");
+        console.log(username);
+        
+        //2.HTML Textbox
+        let name;
+        document.getElementById("mysubmit").onclick=function(){
+            name=document.getElementById("myText").value;
+            console.log(name);
+            //OR
+            //document.getElementById("h1").textContent='Hello ' +name;
+        }
+    </script>
+    </body>
+</html>
