@@ -1,0 +1,35 @@
+body{
+    align-items: center;
+
+}
+#countValue{
+    font-weight: bold;
+    font-size: 1em;
+    margin-bottom: 8px;
+    color: cyan;
+
+}
+#btnContainer{
+    padding: 10px;
+    background-color: ghostwhite;
+    border-radius: 25px;
+}
+.button{
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    padding: 6px;
+    cursor: pointer;
+}
+.button:hover{
+    background-color:springgreen;
+}
+#increaseBtn{
+    background-color: green;
+}
+#decreaseBtn{
+    background-color: red;
+}
+#resetBtn{
+    background-color: blue;
+}
