@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hello Name Application</title>
+        <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction:column;
+            background-color: rgb(245, 236, 225);
+            border: 1px solid black;
+            padding: 20px 100px 100px;
+            height: 100vh;
+        }
+        span{
+            color: orangered;
+        }
+        button{
+            background-color: olive;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+        }
+        button:hover{
+            background-color: olivedrab;
+            color: black;
+            
+        }
+    </style>
+    </head>
+    <body>
+        <div class="container">
+            <h2>Hello <span id="result">World!</span></h2>
+            <button type="button" onclick="onClick()">Click here</button>
+        </div>
+        <script>
+        
+        function onClick(){
+            let yourName=prompt("Enter your name");
+            document.getElementById('result').textContent=yourName;
+        }
+    </script>
+    </body>
+</html>
