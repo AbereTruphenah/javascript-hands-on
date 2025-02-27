@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Leads Tracker</title>
+        <style>
+            body{
+                background-color: white;
+                text-align: center;                
+            }
+            h2{
+                font-family: serif;
+                text-align: center;
+            }
+            .content{
+                display: inline-block;
+                text-align: left;    
+                }
+            .content label{
+                font-weight: bold;
+            }
+            .content #url{
+                width: 300px;
+                padding: 10px;
+            }
+            .content button{
+                padding: 10px 5px;
+                width: 100px;
+                color: white;
+                border: 1px solid black;
+                outline: none;
+                margin: 10px 0;
+            }
+            .content button:hover{
+                cursor: pointer;
+                color: black;
+            }
+            .content #addBtn{
+                background-color: limegreen;
+                margin-right: 120px;
+                
+            }
+            .content #deleteBtn{
+                background-color: brown;
+            }
+            ul li{
+                list-style: none;
+            }
+            a:link, a:visited {
+                text-decoration: none;
+                color: black;
+            }
+            a:hover{
+                color: green;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>LEADS TRACKER</h2>
+        <div class="content">
+            <label for="url">Enter URL:</label><br>
+            <input type="url" id="url" placeholder="https://example.com"><br>
+            <button type="button" id="addBtn" onclick="addLead()">ADD</button>
+            <button type="button" id="deleteBtn" onclick="deleteLead()">DELETE
+                ALL</button>
+        </div>
+        <div id="leads">
+
+            <ul id="leadsList">
+                <li></li>
+            </ul>
+
+        </div>
+        <script>
+            // Get leads from localStorage if they exist, or initialize with default GitHub lead
+            let leads = JSON.parse(localStorage.getItem("leads")) || [
+                {
+                    url: "https://github.com/AbereTruphenah/javascript-hands-on",
+                    text: "https://github.com"
+                }
+            ];
+            const leadsList = document.getElementById('leadsList');
+            
+            // Display existing leads when page loads
+            displayLeads();
+
+            function addLead() {
+                const url = document.getElementById('url').value;
+                if (url) {
+                    // Add new lead to the beginning of the array
+                    leads.unshift({
+                        url: url,
+                        text: url
+                    });
+                    // Save to localStorage
+                    localStorage.setItem("leads", JSON.stringify(leads));
+                    // Clear input field
+                    document.getElementById('url').value = '';
+                    // Update display
+                    displayLeads();
+                }
+            }
+
+            function deleteLead() {
+                // Clear array and localStorage
+                leads = [];
+                localStorage.removeItem("leads");
+                // Reset to initial GitHub lead
+                leads = [{
+                    url: "https://github.com/AbereTruphenah/javascript-hands-on",
+                    text: "https://github.com"
+                }];
+                displayLeads();
+            }
+
+            function displayLeads() {
+                let listItems = '';
+                for (let i = 0; i < leads.length; i++) {
+                    listItems += `
+                        <li><a href="${leads[i].url}" target="_blank">${leads[i].text}</a></li>
+                    `;
+                }
+                leadsList.innerHTML = listItems;
+            }
+        </script>
+    </body>
+</html>
