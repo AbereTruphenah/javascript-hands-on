@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Light Bulb ON and OFF</title>
+        <style>
+            *{
+                box-sizing:border-box;
+            }
+            body{
+                background-color: rgb(32, 32, 32);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+            body.on{
+                background:radial-gradient(grey,rgb(32, 32, 32));
+            }
+            .wire{
+                position: absolute;
+                left: calc(50%);
+                bottom: 50%;
+                background: black;
+                height: 60vh;
+                width: 2px;
+                z-index: 1;
+                
+            }
+            .bulb{
+                position:relative;                
+                z-index: 2;
+                background: transparent;
+                width: 80px;
+                height: 80px;
+            }
+            .bulb i{
+                position: absolute;
+                color: grey;
+                top: 60%;
+                left: 50%;
+                font-size: 3em;
+                transform: translate(-50%,-50%) rotate(180deg);;
+            }
+            .switch{
+                position: absolute;
+                right: 100px;
+                top: 60px;
+                width: 25px;
+                height:25px;
+                background: white;
+                border-radius: 25px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: white 0px 10px 15px -5px;
+                
+            }
+            .switch i{
+                font-size:1em;
+            }
+            .on .bulb i{
+                color: yellow;
+            }
+            .on .switch i{
+                background: green;
+            }
+        </style>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+            integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="wire"></div>
+            <div class="bulb">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+        </div>
+        <div class="switch">
+            <i class="fas fa-power-off"></i>
+        </div>
+        <script>
+            const switchBtn=document.querySelector('.switch');
+
+            const body=document.body;
+
+            switchBtn.addEventListener("click",()=>{
+                body.classList.toggle('on');
+            });
+        </script>
+    </body>
+</html>
